@@ -49,7 +49,9 @@ def get_carros_by_id(id):
 @app.route('/carros', methods=['POST'])
 def create_carro():
     carro = request.json
-    Carros.append(carro)
+    cur.execute('INSERT INTO carros(marca, modelo, ano) VALUES (%s, %s, %s)', 
+                (carro["marca"], carro["modelo"], carro["ano"]))
+    conn.commit()
     return make_response(
         jsonify(
             meessage = 'Carro criado com sucesso!',
@@ -69,21 +71,19 @@ def delete_carro(id):
 @app.route('/carros/<int:id>', methods=['PUT'])
 def update_carro(id):
     carro_new = request.json
-    for carro in Carros:
-        print(carro['id'])
-        if carro['id'] == id:
-            carro.update(carro_new)
-            carro['id'] = id
-            return make_response(
-                jsonify({
-                    "message": f"Carro com id {id} atualizado",
-                    "data": carro
-                }),200)
-        
+    print(carro_new)
+    cur.execute(
+        'UPDATE carros set marca=%s, modelo=%s, ano=%s where id=%s',
+        (carro_new['marca'], carro_new['modelo'], carro_new['ano'], id)
+    )
+    conn.commit()
     return make_response(
         jsonify({
-            "message": "Carro não encontrado"
-        }), 404)
+            "message": f"Carro com id {id} atualizado",
+            "data": carro_new
+        }),200)
+        
+
 
 app.run()
 
