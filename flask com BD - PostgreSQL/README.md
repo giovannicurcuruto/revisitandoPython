@@ -1,5 +1,7 @@
 # CRUD básico, com exemplo de Flask em Python com banco de dados. 
 
+Utilizado o Banco de Dados PostGreSQL
+
 * **GET**
 > /carros
 
@@ -22,7 +24,9 @@
 
 >{
 >    "ano": 2015,
->    "id": 6,
 >    "marca": "Nissan",
 >    "modelo": "Versa"
 >}
+
+* **Banco de Dados**
+> Deverá ser instanciado um BD dentro da ferramenta PgAdmin4
