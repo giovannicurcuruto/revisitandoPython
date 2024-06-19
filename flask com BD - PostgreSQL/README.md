@@ -30,3 +30,11 @@ Utilizado o Banco de Dados PostGreSQL
 
 * **Banco de Dados**
 > Deverá ser instanciado um BD dentro da ferramenta PgAdmin4
+
+
+* **TODO**
+> colocar os padrões REST (400,200,500, etc)
+> criar uma classe de conexão com o banco
+> Teste unitário
+> Classe unitária para montar o JSONFY (?)
+> Modelar usando Swagger ou OPEN_API
